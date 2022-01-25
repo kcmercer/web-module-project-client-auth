@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Login from './components/login';
+import FriendsList from './components/friendsList';
+import PrivateRoute from './components/privateRoute';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -46,6 +48,7 @@ function App() {
       <div className="App">
         <StyledDiv>
           <StyledH1>FRIENDS DATABASE</StyledH1>
+
           <StyledUl>
             <StyledLi>
               <Link style={{ textDecoration: 'none', color: 'white' }} to="/login">LOGIN.</Link>
@@ -69,9 +72,12 @@ function App() {
 
         <div>
           <Switch>
+            <PrivateRoute exact path="/FriendsList" component={FriendsList} />
+            
             <Route path="/login" component={Login} />
           </Switch>
         </div>
+
       </div>
     </Router>
   );
