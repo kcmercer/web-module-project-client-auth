@@ -69,7 +69,7 @@ class Login extends React.Component {
                 localStorage.setItem("role", resp.data.role)
                 localStorage.setItem("username", resp.data.username);
 
-                this.props.history.push('/FriendsList')
+                this.props.history.push('/friends')
             })
             .catch(error => {
                 console.log(error)

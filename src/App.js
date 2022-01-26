@@ -7,6 +7,7 @@ import Login from './components/login';
 import FriendsList from './components/friendsList';
 import PrivateRoute from './components/privateRoute';
 import AddFriends from './components/addFriend';
+import Logout from './components/logout';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -74,7 +75,10 @@ function App() {
         <div>
           <Switch>
             <PrivateRoute exact path="/friends" component={FriendsList} />
+
             <PrivateRoute exact path="/friends/add" component={AddFriends} />
+
+            <PrivateRoute exact path="/logout" component={Logout} />
 
             <Route path="/login" component={Login} />
           </Switch>
