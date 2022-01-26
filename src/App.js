@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Login from './components/login';
 import FriendsList from './components/friendsList';
 import PrivateRoute from './components/privateRoute';
+import AddFriends from './components/addFriend';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -41,7 +42,7 @@ const StyledH1 = styled.h1`
 `
 
 function App() {
-  const isLoggedIn = true;
+  const isLoggedIn = localStorage.getItem('token');
 
   return (
     <Router>
@@ -59,11 +60,11 @@ function App() {
             </StyledLi>
 
             <StyledLi>
-              {isLoggedIn && <Link style={{ textDecoration: 'none', color: 'white' }} to="/friendlist">FRIENDLIST.</Link>}
+              {isLoggedIn && <Link style={{ textDecoration: 'none', color: 'white' }} to="/friends">FRIENDLIST.</Link>}
             </StyledLi>
 
             <StyledLi>
-              {isLoggedIn && <Link style={{ textDecoration: 'none', color: 'white' }} to="/addfriend">ADDFRIEND.</Link>}
+              {isLoggedIn && <Link style={{ textDecoration: 'none', color: 'white' }} to="/friends/add">ADDFRIEND.</Link>}
             </StyledLi>
           </StyledUl>
         </StyledDiv>
@@ -72,8 +73,9 @@ function App() {
 
         <div>
           <Switch>
-            <PrivateRoute exact path="/FriendsList" component={FriendsList} />
-            
+            <PrivateRoute exact path="/friends" component={FriendsList} />
+            <PrivateRoute exact path="/friends/add" component={AddFriends} />
+
             <Route path="/login" component={Login} />
           </Switch>
         </div>
